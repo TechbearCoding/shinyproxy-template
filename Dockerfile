@@ -1,6 +1,6 @@
 FROM openanalytics/r-base
 
-MAINTAINER Tobias Verbeke "tobias.verbeke@openanalytics.eu"
+MAINTAINER Martins Leitarts "martins@techspace.lv"
 
 # system libraries of general use
 RUN apt-get update && apt-get install -y \
