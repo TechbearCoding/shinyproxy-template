@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y \
     libssl1.1 \
     && rm -rf /var/lib/apt/lists/*
 
-# system library dependency for the euler app
+# system library dependency for the resources app
 RUN apt-get update && apt-get install -y \
     libmpfr-dev \
     && rm -rf /var/lib/apt/lists/*
@@ -23,15 +23,15 @@ RUN apt-get update && apt-get install -y \
 # basic shiny functionality
 RUN R -e "install.packages(c('shiny', 'rmarkdown'), repos='https://cloud.r-project.org/')"
 
-# install dependencies of the euler app
+# # install dependencies of the resources app
 RUN R -e "install.packages('Rmpfr', repos='https://cloud.r-project.org/')"
 
 # copy the app to the image
-RUN mkdir /root/euler
-COPY euler /root/euler
+RUN mkdir /root/resources
+COPY resources /root/resources
 
 COPY Rprofile.site /usr/lib/R/etc/
 
 EXPOSE 3838
 
-CMD ["R", "-e", "shiny::runApp('/root/euler')"]
+CMD ["R", "-e", "shiny::runApp('/root/resources')"]
